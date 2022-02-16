@@ -32,24 +32,40 @@ let unshuffledCardDeck = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
 // You can return the answer in any order.
 
-function twoSum(nums, target) {
-  const indices = {};
-
-  nums.forEach((item, index) => {
-      indices[item] = index
-      console.log(indices)
-  });
-
-  for (let index = 0; index < nums.length; index++) {
-      const complement = target - nums[index];
-
-      if (indices[complement] !== undefined && indices[complement] !== index) {
-          return [index, indices[complement]]
+function intTarget(arr, target) {
+  let output = []
+  
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++){
+      if (arr[i] + arr[j] == target) {
+        return output = [i, j]
       }
+    };
+    
   }
-};
+}
 
-console.log(twoSum([3,4, 8, 10], 18))
+console.log(intTarget([2,5,5,11,15], 10))
+
+
+// function twoSum(nums, target) {
+//   const indices = {};
+
+//   nums.forEach((item, index) => {
+//       indices[item] = index
+//       console.log(indices)
+//   });
+
+//   for (let index = 0; index < nums.length; index++) {
+//       const complement = target - nums[index];
+
+//       if (indices[complement] !== undefined && indices[complement] !== index) {
+//           return [index, indices[complement]]
+//       }
+//   }
+// };
+
+// console.log(twoSum([3,4, 8, 10], 18))
 
 // - Write a function called formatWithPadding that accepts three arguments:
 //   - A numeric argument (an integer) representing the number to format.
