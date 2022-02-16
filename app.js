@@ -45,27 +45,8 @@ function intTarget(arr, target) {
   }
 }
 
-console.log(intTarget([2,5,5,11,15], 10))
+// console.log(intTarget([2,5,5,11,15], 10))
 
-
-// function twoSum(nums, target) {
-//   const indices = {};
-
-//   nums.forEach((item, index) => {
-//       indices[item] = index
-//       console.log(indices)
-//   });
-
-//   for (let index = 0; index < nums.length; index++) {
-//       const complement = target - nums[index];
-
-//       if (indices[complement] !== undefined && indices[complement] !== index) {
-//           return [index, indices[complement]]
-//       }
-//   }
-// };
-
-// console.log(twoSum([3,4, 8, 10], 18))
 
 // - Write a function called formatWithPadding that accepts three arguments:
 //   - A numeric argument (an integer) representing the number to format.
@@ -80,10 +61,18 @@ console.log(intTarget([2,5,5,11,15], 10))
 // formatWithPadding(42, '*', 10); //=> "********42"
 // formatWithPadding(1234, '*', 3); //=> "1234"
 
+// function formatWithPadding(int, char, length) {
+//   let result = int.toFixed(0)
+//   if (result.length < length) {
+//     result = char + result
+//   }
+//   return result
+// }
+
+// or you can use padStart(). Look it up on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+
 function formatWithPadding(int, char, length) {
-  var result = int.toFixed(0);
-  while (result.length < length) {
-    result = char + result;
-  }
-  return result;
+  return int.toFixed(0).padStart(length, char)
 }
+
+console.log(formatWithPadding(123, "p", 190))
