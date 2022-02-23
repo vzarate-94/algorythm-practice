@@ -75,4 +75,68 @@ function formatWithPadding(int, char, length) {
   return int.toFixed(0).padStart(length, char)
 }
 
-console.log(formatWithPadding(123, "p", 190))
+// console.log(formatWithPadding(123, "p", 190))
+
+// FIGURE OUT HOW TO CALCULATE GOLF INDEX!
+
+function totalFruit(array) {
+  let map = new Map()
+  let max = -1
+  for(let start = 0, end = 0; end < array.length; end++) {
+    let currElement = array[end]
+    map.set(currElement, map.get(currElement)+1 || 1)
+    while (map.size > 2) {
+      let char = array[start]
+      let charCount = map.get(char)
+      if(charCount -1 === 0 )map.delete(char)
+      else map.set(char, charCount-1)
+      start++
+    }
+    if(map.size >= 1) max = Math.max(max, end +1 - start)
+  }
+  return max
+}
+
+// console.log(totalFruit([3,4,3,2,1,1,1,2,1,1,2]))
+
+// let map = new Map() 
+// let currElement = 3
+// console.log(map.set(currElement, 1+1 || 1))
+
+// console.log(Math.max(3, 0 +1 - 0))
+
+// function practiceMap(arr) {
+//   let map = new Map()
+
+//   for (let i = 0; i < arr.length; i++) {
+//     let
+    
+//   }
+// }
+
+// FormatWIthPadding
+// Prompt:
+
+// - Write a function called formatWithPadding that accepts three arguments:
+// - A numeric argument (an integer) representing the number to format.
+// - A string argument (a single character) representing the character used to "pad" the returned string to a minimum length.
+// - Another numeric argument (an integer) representing the length to "pad" the returned string to.
+// - The function should return the integer as a string, "left padded" to the length of the 3rd arg using the character provided in the 2nd arg.
+// - If the length of the integer converted to a string is equal or greater than the 3rd argument, no padding is needed - just return the integer as a string.
+
+// Examples:
+
+// formatWithPadding(123, '0', 5); //=> "00123"
+// formatWithPadding(42, '*', 10); //=> "********42"
+// formatWithPadding(1234, '*', 3); //=> "1234"
+
+function formatWithPadding(int, str, length) {
+  let output = int.toString()
+  output = output.padStart(length, str)
+  return output
+}
+
+function formatWithPadding2(int, char, length) {
+  return int.toFixed(0).padStart(length, char);
+}
+
