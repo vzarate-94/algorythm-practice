@@ -140,3 +140,74 @@ function formatWithPadding2(int, char, length) {
   return int.toFixed(0).padStart(length, char);
 }
 
+// Prompt:
+
+// In information theory, the hamming distance refers to the count of the differences between two strings of equal length. It is used in computer science for such things as implementing a "fuzzy search" capability.
+
+// - Write a function named hammingDistance that accepts two arguments, which are both strings of equal length.
+// - The function should return the count of the symbols (characters, numbers, etc.) at the same position within each string that are different.
+// - If the strings are not of the same length, the function should return NaN.
+
+// Examples:
+
+// hammingDistance('abc', 'abc'); //=> 0
+// hammingDistance('a1c', 'a2c'); //=> 1
+// hammingDistance('!!!!', '****'); //=> 4
+// hammingDistance('abc', 'ab'); //=> NaN
+
+function hammingDistance(str1, str2) {
+  if (str1.length != str2.length) return NaN 
+  let distance = 0
+
+  for (let i = 0; i < str1.length; i++) {
+    if (str1.charAt(i) != str2.charAt(i)) {
+      distance++
+    }
+    
+  }
+  return distance
+}
+
+// console.log(hammingDistance("hello", "help9"))
+
+
+// Is palidrom?
+function isPalindrome(str) {
+  if (str.length <= 1) return true
+  str = str.toLowerCase().replace(' ', '')
+  
+  for (let i = 0; i < Math.floor(str.length / 2); i++) {
+    if (str[i] === str[str.length - 1]) return true
+    else return false
+  }
+}
+
+// Challenge: 13-mumble
+
+// Difficulty: Intermediate
+
+// Prompt:
+
+// - Write a function called mumble that accepts a single string argument.
+// - The function should return a string that has each character repeated the number of times according to its position within the string arg. Additionally, each repeated section of characters should be separated by a hyphen (-).
+// - Examples describe it best..
+
+// Examples:
+
+// mumble('X'); //=> 'X'
+// mumble('abc'); //=> 'a-bb-ccc'
+// mumble('121'); //=> '1-22-111'
+// mumble('!A 2'); //=> '!-AA-   -2222'
+// -----------------------------------------------------------------------------*/
+
+function mumble(str) {
+  let output = ""
+  for (let i = 0; i < str.length; i++) {
+    output += str[i].repeat(i + 1)
+    output += "-"
+  }
+  output = output.split("")
+  return output.slice(0, -1).join("")
+}
+
+console.log(mumble('abc'))
